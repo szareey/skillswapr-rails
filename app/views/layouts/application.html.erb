@@ -5,9 +5,34 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "bootstrap.min.css" %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <%= stylesheet_link_tag "app_css.css" %>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+
 </head>
 <body>
-
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value) %>
+  <% end %>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <i class="fa fa-lightbulb-o"></i>
+          SkillSwapr
+        </a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a id="navbar_button" href="/sessions/new" >Login</a>
+        </li> 
+      </ul>    
+    </div>
+  <div class="container">
+  </nav>
+  
 <%= yield %>
 
 </body>
