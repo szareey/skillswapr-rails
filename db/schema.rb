@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604152920) do
+ActiveRecord::Schema.define(version: 20150604165547) do
 
   create_table "skills", force: true do |t|
     t.string   "name"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20150604152920) do
     t.string   "user_img_content_type"
     t.integer  "user_img_file_size"
     t.datetime "user_img_updated_at"
+    t.boolean  "is_admin",              default: false
+    t.boolean  "deleted",               default: false
   end
 
   create_table "users_skills", force: true do |t|

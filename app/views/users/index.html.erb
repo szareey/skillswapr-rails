@@ -1,0 +1,25 @@
+<%= render "shared/search_bar" %>
+<ul>
+  <% @users.each do |user| %>
+    <% teach_skills = user.teachable_skills.map &:name %>
+    <% learn_skills = user.learnable_skills.map &:name %>
+    <li class="list-group-item" id="user">
+      <div class="row">
+        <div class="col-md-1">
+        <img id="user_image" src='<%= user.user_img %>'/>
+        </div>
+        <div class="col-md-14" id="user_info">
+          <div id="text">
+            <p id="text"><strong>Username: </strong><a href="/users/<%= user.id %>" target="_blank"><%= user.username %></a></p>
+            <p id="text"><strong>Learning: </strong>
+              <%= render partial: "/shared/list_skills", collection: (user.teachable_skills.map &:name), locals: {format: "info"} %>
+            </p>
+            <p id="text"><strong>Teaching: </strong>
+            <%= render partial: "/shared/list_skills", collection: (user.learnable_skills.map &:name), locals: {format: "success"} %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </li>
+<% end %>
+</ul>

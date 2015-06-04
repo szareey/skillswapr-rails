@@ -1,0 +1,42 @@
+<form role="search" method="get" id="user_list">
+  <div class="form-group">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <input type="text" class="form-control" name="query" placeholder="Search" >
+    </div>
+    <button type="submit" id="search_button" class="btn btn-primary">
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+    <div class="col-md-offset-4" id="search-criteria">
+      <div class="radio-inline">
+        <label>Search by: </label>
+      </div>
+      <div class="radio-inline">
+        <label>
+          <input type="radio" name="search_by" value="skill" checked="checked"> Skill
+        </label>  
+      </div>
+      <div class="radio-inline">  
+        <label>
+          <input type="radio" name="search_by" value="username"> Username
+        </label>
+      </div>
+    </div>
+    <% if params[:query]  %>
+      <% list = @users %>
+    <% else %>
+      <% list = User.all %>
+    <% end %>
+
+    <% if @not_found_message %>
+    <div class="col-md-offset-4" id="search-criteria">
+      <% if params[:search_by] == "username" %>
+      <p id="no-result-message">No user found with that name, please search again.</p>
+        <% elsif params[:search_by] == "skill" %>
+      <p id="no-result-message">No skill found with that name, please search again.</p>
+    <% end %>
+    <% end %>
+    </div>
+</form>

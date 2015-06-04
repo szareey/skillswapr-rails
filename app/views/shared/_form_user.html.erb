@@ -1,4 +1,4 @@
-<%= form_for current_user, :html => { :multipart => true} do |f| %>
+<%= form_for @user, :html => { :multipart => true} do |f| %>
     <%= f.label "username" %><br>
     <%= f.text_field "username" %>
   </div>
@@ -11,20 +11,27 @@
     <%= f.password_field "password" %>
   </div>
   <div>
-    <%= f.label "user_img" %><br>
-    <%= f.text_field "user_img" %>
-  </div>
-  <div>
     <%= f.label "blurb" %><br>
     <%= f.text_field "blurb", size: "60x24" %>
   </div>
+  <br>
+  <br>
+  <br>
   <div>
+    <img id="" src='<%= @user.user_img(:thumb) %>'>
+    <%= f.label "Profile Pic" %><br>
     <%= f.file_field :user_img %><br>
   </div>
   <div>
     <%= f.label "show_contact" %><br>
     <%= f.check_box "show_contact" %>
   </div>
+  <% if current_user.is_admin %>
+    <div>
+      <%= f.label "deleted_at" %><br>
+      <%= f.check_box "deleted"  %>
+    </div>
+  <% end %>
   <div>
     <%= f.submit "Save" %> 
   </div>

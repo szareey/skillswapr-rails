@@ -1,15 +1,15 @@
 <div class="row">
   <a class="btn btn-success" id="browse_button" style ="float: right" href="/users" role="button"><i class="glyphicon glyphicon-search"></i> Browse Users </a>
   </br>
-  <a class="btn btn-success" id="edit" href="/users/<%=current_user.id%>/edit" role="button">
+  <a class="btn btn-success" id="edit" href="/users/<%=@user.id%>/edit" role="button">
   <i class="glyphicon glyphicon-edit"></i> Edit Your User Profile</a>
   </br>
   </br>
-  <a class="btn btn-success" id="edit" href="/users/<%=current_user.id%>" role="button">
+  <a class="btn btn-success" id="edit" href="/users/<%=@user.id%>" role="button">
   <i class="glyphicon glyphicon-edit"></i> Go To Your Profile</a>
   </br>
 </div>
-  <h1 id="welcome"> <strong> <i class="glyphicon glyphicon-dashboard"></i> Welcome <%= current_user.username %> to your dashboard </strong> </h1>
+  <h1 id="welcome"> <strong> <i class="glyphicon glyphicon-dashboard"></i> Welcome <%= @user.username %> to your dashboard </strong> </h1>
 
 <div>
   <ul class="list-group">
@@ -33,7 +33,7 @@
 
 <div class="row">
   <h3 id="people"> People you may want meet! </h3>
-  <% current_user.get_matches.each do |match| %>
+  <% @user.get_matches.each do |match| %>
   <li class="list-group-item" id="user_match" >
     <div class="row" >
     <div class="col-md-1">
@@ -45,12 +45,12 @@
       <div >
         <strong><a href="/users/<%= match.id %>"><%= match.username %> </a></strong></br>
           Wants to learn 
-          <% current_user.i_teach_they_learn(match).each do |teach| %>
+          <% @user.i_teach_they_learn(match).each do |teach| %>
             <a id="skill_label" href="/users?query=<%= teach %>&search_by=skill"><span class="label label-info"><%= teach.capitalize %></span></a>
           <% end %>
            
           </br>And can teach
-          <% current_user.i_learn_they_teach(match).each do |learn| %>
+          <% @user.i_learn_they_teach(match).each do |learn| %>
             <a id="skill_label" href="/users?query=<%= learn %>&search_by=skill"><span class="label label-success"><%= learn.capitalize %></span></a>
           <% end %>
         </div>
