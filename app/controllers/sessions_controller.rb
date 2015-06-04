@@ -9,11 +9,16 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to dashboard_path
+      redirect_to '/'
     else
       flash.now[:alert] = "login failed"
       render :new
     end
+  end
+
+  def destroy
+      session[:user_id] = nil
+      redirect_to '/', notice: "Adios!"
   end
 
 end

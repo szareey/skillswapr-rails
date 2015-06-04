@@ -1,2 +1,18 @@
-<h1>Dashboard#edit</h1>
-<p>Find me in app/views/dashboard/edit.html.erb</p>
+ <a class="btn btn-primary" style ="float: right" href="/" role="button">
+ <i class="glyphicon glyphicon-dashboard"></i>Dashboard</a> 
+ <h1 id="dash_editor"> <strong> <i class="glyphicon glyphicon-edit"></i> Edit Profile</strong> </h1>
+    <%= render "/shared/form_user" %>
+  <div class="row"> <h3> You want to teach:
+  
+    <%= render partial: "/shared/list_skills", collection: @teachables, locals: {format: "info"} %>
+  </div>
+  <div class="row">
+    <%= render "/shared/form_teachables" %>
+  </h3> </div>
+    <div class="row">
+    <h3> You want to learn:
+
+      <%= render partial: "/shared/list_skills", collection: @learnables, locals: {format: "success"} %>
+    </h3>
+    </div>
+    <%= render "/shared/form_learnables" %>

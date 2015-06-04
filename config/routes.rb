@@ -2,19 +2,17 @@ Rails.application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :users
+  resources :users do
 
-  get 'dashboard', to: 'dashboard#show'
+      resources :teachables, :learnables, only: [:create, :destroy]
 
-  get 'dashboard/edit', to: 'dashboard#edit'
-
-  put 'dashboard/update', to: 'dashboard#update'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'homepage#index'
+  root 'dashboard#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

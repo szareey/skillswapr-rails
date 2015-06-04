@@ -1,12 +1,29 @@
 class UsersController < ApplicationController
 
+  before_filter :list_skills
+
   def index
     @user = User.all
   end
 
   def show
+    
   end
 
+  def edit
+    
+  end
+
+  def update
+    
+    if current_user == User.find_by(id: params[:id])
+      user_params
+      current_user.update(user_params)
+    end
+    redirect_to edit_user_path
+    
+  end
+ 
   def new
     @user = User.new
   end
@@ -19,6 +36,7 @@ class UsersController < ApplicationController
     else
       render :new
     end
+
   end
 
   protected
