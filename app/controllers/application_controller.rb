@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
-    def list_skills
-      @learnables = current_user.learnable_skills.map &:name 
-      @teachables = current_user.teachable_skills.map &:name
+    def list_skills(user)
+        @learnables = user.learnable_skills.map &:name 
+        @teachables = user.teachable_skills.map &:name
     end
 
     helper_method :current_user, :list_skills

@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'puma'
 gem 'tux'
 gem 'byebug'
+gem 'paperclip'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

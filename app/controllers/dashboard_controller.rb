@@ -1,13 +1,14 @@
 class DashboardController < ApplicationController
   
-  before_filter :list_skills
+  before_filter do
+    list_skills(current_user)
+  end
 
   def show
     render :welcome unless current_user
   end
 
   def edit
-    list_skills
   end
 
   def update
@@ -15,8 +16,5 @@ class DashboardController < ApplicationController
 
   def destory
   end
-
-  protected
-
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602224858) do
+ActiveRecord::Schema.define(version: 20150604152920) do
 
   create_table "skills", force: true do |t|
     t.string   "name"
@@ -23,11 +23,14 @@ ActiveRecord::Schema.define(version: 20150602224858) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "user_img"
-    t.string   "blurb",           default: "Eu putent convenire iudicabit est, illud everti bonorum usu ut. Nostro inermis eu mei, vel quodsi malorum salutatus id. Et tale possim eam, te illud facilisis disputando ius. Mel cu illud soleat, vix iusto mediocritatem id, ne vocent quaestio voluptaria mei. Primis prodesset delicatissimi at eum, lobortis torquatos mel an. Eu prima civibus neglegentur sed."
-    t.boolean  "show_contact",    default: true
+    t.string   "blurb",                 default: "Eu putent convenire iudicabit est, illud everti bonorum usu ut. Nostro inermis eu mei, vel quodsi malorum salutatus id. Et tale possim eam, te illud facilisis disputando ius. Mel cu illud soleat, vix iusto mediocritatem id, ne vocent quaestio voluptaria mei. Primis prodesset delicatissimi at eum, lobortis torquatos mel an. Eu prima civibus neglegentur sed."
+    t.boolean  "show_contact",          default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_img_file_name"
+    t.string   "user_img_content_type"
+    t.integer  "user_img_file_size"
+    t.datetime "user_img_updated_at"
   end
 
   create_table "users_skills", force: true do |t|

@@ -1,17 +1,16 @@
 class UsersController < ApplicationController
 
-  before_filter :list_skills
-
   def index
     @user = User.all
   end
 
   def show
-    
+    list_skills(User.find_by(id: params[:id]))
+    @user = User.find_by(id: params[:id])
   end
 
   def edit
-    
+    list_skills(User.find_by(id: params[:id]))
   end
 
   def update
