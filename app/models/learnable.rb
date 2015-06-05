@@ -1,2 +1,2 @@
-class Learnable < Users_Skills
+class Learnable < UsersSkills
 end

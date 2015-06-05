@@ -16,14 +16,14 @@ class User < ActiveRecord::Base
 
   searchkick autocomplete: ['username']
 
-
+ 
   def get_teachers
-    User.joins(teachables: {skill: {learnables: :user}}).where("users_skills.id = ? and users.id != ?", id, id).distinct
+    User.joins(teachables: {skill: {learnables: :user}}).where("users_users_skills.id = ? and users.id != ?", id, id).distinct
   end
 
   #returns and array of User object of people who can learn you want you want to teach
   def get_students  
-    User.joins(learnables: {skill: {teachables: :user}}).where("users_skills.id = ? and users.id != ?", id, id).distinct
+    User.joins(learnables: {skill: {teachables: :user}}).where("users_users_skills.id = ? and users.id != ?", id, id).distinct
   end
 
   def get_matches

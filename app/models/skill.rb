@@ -9,5 +9,8 @@ class Skill < ActiveRecord::Base
   has_many :learners, through: :learnables, source: 'user'
 
   searchkick
-  
+
+  def add_skill
+  end
+
 end

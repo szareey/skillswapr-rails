@@ -5,13 +5,11 @@ class UsersController < ApplicationController
   end
 
   def index
-    
     if params[:query].present?
       @users = User.search(params[:query])
     else
       @users = User.all
     end
-    
   end
 
   def dashboard
