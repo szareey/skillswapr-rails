@@ -1,5 +1,6 @@
 <label>Add a Learnable</label>
 <form class="form-group" method="post" action="/users/<%=@user.id%>/learnables">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
   <input id="edit_dash" type="text" name="add_learnable">
   <button type="submit" class="btn btn-default">Add</button>
 </form>

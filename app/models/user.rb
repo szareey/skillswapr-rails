@@ -24,9 +24,9 @@ class User < ActiveRecord::Base
   end
 
   def get_matches
+    byebug
     get_teachers & get_students
   end
-
 
   def i_learn_they_teach(user)
      (learnable_skills.map &:name) & (user.teachable_skills.map &:name) 

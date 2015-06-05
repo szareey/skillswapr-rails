@@ -12,6 +12,16 @@ class UsersController < ApplicationController
     render :welcome_page unless current_user
   end
 
+  def dashboard_admin
+    if current_user.is_admin?
+      get_user_info(User.find_by(id: params[:id]))
+      render 'dashboard'
+    elsif current_user.is_admin?
+      flash[:notice] = "You are unauthorized to view other user's dashboards"
+      redirect_to '/'
+    end
+  end
+
   def show
     get_user_info(user)
     @user = user
@@ -56,6 +66,8 @@ class UsersController < ApplicationController
 
   def get_user_info(user)
     if user
+      @teachable_objects = user.teachable_skills
+      @learnable_objects = user.learnable_skills
       @learnables = user.learnable_skills.map &:name 
       @teachables = user.teachable_skills.map &:name
       @user = user

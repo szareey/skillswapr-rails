@@ -4,7 +4,7 @@
     <%= render "/shared/form_user" %>
   <div class="row"> <h3> You want to teach:
   
-    <%= render partial: "/shared/list_skills", collection: @teachables, locals: {format: "info"} %>
+    <%= render partial: "/shared/skill_list_edit", collection: @teachable_objects, locals: {format: "info", type: "teachable"} %>
   </div>
   <div class="row">
     <%= render "/shared/form_teachables" %>
@@ -12,7 +12,7 @@
     <div class="row">
     <h3> You want to learn:
 
-      <%= render partial: "/shared/list_skills", collection: @learnables, locals: {format: "success"} %>
+      <%= render partial: "/shared/skill_list_edit", collection: @learnable_objects, locals: {format: "success", type: "learnable"} %>
     </h3>
     </div>
     <%= render "/shared/form_learnables" %>

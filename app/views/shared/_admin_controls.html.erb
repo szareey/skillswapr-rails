@@ -1,0 +1,7 @@
+You are an Admin. You can edit <%= @user.username %>'s.
+
+<p class="row"><a class="btn btn-success" id="edit" href="/users/<%=@user.id%>/edit" role="button">
+<i class="glyphicon glyphicon-edit"></i> Edit <%= @user.username %>'s profile</a></p>
+
+<p class="row"><a class="btn btn-success" id="edit" href="/users/<%=@user.id%>/dashboard" role="button">
+<i class="glyphicon glyphicon-edit"></i> Go To <%= @user.username %>'s Dashboard</a></p>

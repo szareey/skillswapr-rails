@@ -8,11 +8,16 @@ Rails.application.routes.draw do
 
   end
 
+  # For admin access
+  get 'users/:id/dashboard' => 'users#dashboard_admin'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'users#dashboard'
+
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
