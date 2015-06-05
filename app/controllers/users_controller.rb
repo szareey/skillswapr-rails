@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     get_user_info(current_user) if current_user
   end
 
+  def autocomplete
+    @result = User.search(params[:query], fields: [{username: :autocomplete}], limit: 10).map(&:username)
+    render json: @result
+  end
+
   def index
     if params[:query].present?
       @users = User.search(params[:query])

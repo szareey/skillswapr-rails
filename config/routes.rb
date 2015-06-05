@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :users do
-    get :autocomplete
+    collection {get :autocomplete}
     resources :teachables, :learnables, only: [:create, :destroy]
   end
 
