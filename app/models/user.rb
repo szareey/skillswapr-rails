@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   has_many :teachable_skills, through: :teachables, source: 'skill'
   has_many :learnable_skills, through: :learnables, source: 'skill'
 
+  searchkick autocomplete: ['username']
+
+
   def get_teachers
     User.joins(teachables: {skill: {learnables: :user}}).where("users_skills.id = ? and users.id != ?", id, id).distinct
   end
@@ -24,7 +27,6 @@ class User < ActiveRecord::Base
   end
 
   def get_matches
-    byebug
     get_teachers & get_students
   end
 
@@ -35,8 +37,5 @@ class User < ActiveRecord::Base
   def i_teach_they_learn(user)
      (teachable_skills.map &:name) & (user.learnable_skills.map &:name)
   end
-
-  #returns an array of User objects
- 
 
 end

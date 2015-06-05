@@ -15,8 +15,10 @@ class TeachablesController < ApplicationController
   end
 
   def destroy
+
     Teachable.find_by(skill_id: params[:teachable_id], user_id: params[:user_id]).destroy
     redirect_to 'edit'
+    
   end
 
 end

@@ -8,4 +8,6 @@ class Skill < ActiveRecord::Base
   has_many :teachers, through: :teachables, source: 'user'
   has_many :learners, through: :learnables, source: 'user'
 
+  searchkick
+  
 end

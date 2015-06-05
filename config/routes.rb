@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :users do
-
-      resources :teachables, :learnables, only: [:create, :destroy]
+    get :autocomplete
+    resources :teachables, :learnables, only: [:create, :destroy]
 
   end
 

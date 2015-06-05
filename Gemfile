@@ -17,6 +17,10 @@ gem 'puma'
 gem 'tux'
 gem 'byebug'
 gem 'paperclip'
+gem 'elasticsearch'
+gem 'elasticsearch-api'
+gem 'elasticsearch-model'
+gem 'searchkick'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

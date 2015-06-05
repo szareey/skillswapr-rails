@@ -5,7 +5,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    
+    if params[:query].present?
+      @users = User.search(params[:query])
+    else
+      @users = User.all
+    end
+    
   end
 
   def dashboard
@@ -30,6 +36,7 @@ class UsersController < ApplicationController
   def edit
     if current_user == user || current_user.is_admin?
       get_user_info(User.find_by(id: params[:id]))
+      
     else
       flash[:notice] = "You are unauthorized to edit other users profiles"
       redirect_to '/'
@@ -39,8 +46,9 @@ class UsersController < ApplicationController
   def update
     if current_user == user || current_user.is_admin
       user_params
-      @user = user
-      @user.update(user_params)
+      @already_deleted_flag = user.deleted? #used to check if the user is already deleted before an admin visited the a user's edit page
+      user.update(user_params)
+      UserMailer.account_deleted(@user) if user.deleted? && !@already_deleted_flag
     end
     redirect_to edit_user_path
   end

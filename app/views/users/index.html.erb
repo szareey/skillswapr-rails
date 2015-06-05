@@ -10,11 +10,11 @@
         </div>
         <div class="col-md-14" id="user_info">
           <div id="text">
-            <p id="text"><strong>Username: </strong><a href="/users/<%= user.id %>" target="_blank"><%= user.username %></a></p>
-            <p id="text"><strong>Learning: </strong>
+            <p id="text">Username:<a href="/users/<%= user.id %>" target="_blank"><%= user.username %></a></p>
+            <p id="text">Learning:
               <%= render partial: "/shared/list_skills", collection: (user.teachable_skills.map &:name), locals: {format: "info"} %>
             </p>
-            <p id="text"><strong>Teaching: </strong>
+            <p id="text">Teaching:
             <%= render partial: "/shared/list_skills", collection: (user.learnable_skills.map &:name), locals: {format: "success"} %>
             </p>
           </div>
